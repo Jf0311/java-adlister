@@ -7,6 +7,7 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 
 <head>
@@ -14,14 +15,18 @@
 </head>
 
 <body>
+<%@ include file="partials/navbar.jsp" %>
+<%@ include file="partials/head.jsp" %>
 <h1> Hello , Code-up</h1>
 
 <p> You submitted a  username of ${param.username} </p>
 <p> You submitted a  password of ${param.password} </p>
 
-<c:if test="${param.username == 'admin' && param.password == 'password'}">
-    <% response.sendRedirect("profile.jsp"); %>
-</c:if>
+<div class="container">
+    <c:if test="${param.username.equals('admin') && param.password.equals('password')}">
+        <meta http-equiv="Refresh" content="0; url='http://localhost:8080/profile.jsp'"/>
+    </c:if>
+</div>
 
 
 <form method="POST" action="login.jsp">
